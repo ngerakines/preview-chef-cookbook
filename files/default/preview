@@ -10,10 +10,10 @@
 # pidfile:     /var/run/preview.pid
  
 # Source function library.
-. /etc/rc.d/init.d/functions
+[ -f /etc/rc.d/init.d/functions ] && . /etc/rc.d/init.d/functions
  
 # Source networking configuration.
-. /etc/sysconfig/network
+[ -f /etc/sysconfig/network ] && . /etc/sysconfig/network
  
 # Check that networking is up.
 [ "$NETWORKING" = "no" ] && exit 0
@@ -25,8 +25,6 @@ PREVIEW_CONF_FILE="/etc/preview.conf"
  
 [ -f /etc/sysconfig/preview ] && . /etc/sysconfig/preview
  
-lockfile=/var/lock/subsys/preview
- 
 start() {
     [ -x $preview ] || exit 5
     [ -f $PREVIEW_CONF_FILE ] || exit 6
@@ -34,7 +32,6 @@ start() {
     daemon $preview --config $PREVIEW_CONF_FILE > /var/log/preview.log 2>&1 &
     retval=$?
     echo
-    [ $retval -eq 0 ] && touch $lockfile
     return $retval
 }
  
@@ -43,7 +40,6 @@ stop() {
     killproc $prog
     retval=$?
     echo
-    [ $retval -eq 0 ] && rm -f $lockfile
     return $retval
 }
  

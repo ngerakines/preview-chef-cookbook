@@ -7,9 +7,9 @@
 # This project and its contents are open source under the MIT license.
 #
 
-template '/etc/init.d/preview' do
-  source 'preview-init.erb'
-  mode 0700
+cookbook_file '/etc/init.d/preview' do
+  source 'preview'
+  mode 00777
   owner 'root'
   group 'root'
 end
