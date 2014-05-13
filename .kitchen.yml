@@ -34,4 +34,7 @@ suites:
   - name: build
     run_list:
       - recipe[preview::build]
+      - recipe[preview::default]
     attributes:
+      preview:
+        install_type: 'none'

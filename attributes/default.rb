@@ -2,6 +2,7 @@
 default[:preview][:platform] = 'amd64'
 default[:preview][:version] = '0.1.0'
 default[:preview][:install_type] = 'archive'
+default[:preview][:package] = 'preview'
 default[:preview][:archive_source] = "https://github.com/ngerakines/tram/releases/download/v#{node[:preview][:version]}/tram-#{node[:preview][:version]}.linux_#{node[:preview][:platform]}.zip"
 
 default[:preview][:port] = 8080

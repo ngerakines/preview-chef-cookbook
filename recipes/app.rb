@@ -38,31 +38,29 @@ end
 
 case node[:preview][:install_type]
 when 'package'
-  package node[:preview][:package] do
-    action :upgrade
-  end
+  package node[:preview][:package]
 when 'archive'
-  remote_file "#{Chef::Config[:file_cache_path]}/preview-#{node[:preview][:version]}.zip" do
+  remote_file "#{Chef::Config[:file_cache_path]}/preview.zip" do
     source node[:preview][:archive_source]
   end
 
   bash 'extract_app' do
     cwd '/home/preview/'
     code <<-EOH
-      unzip #{Chef::Config[:file_cache_path]}/preview-#{node[:preview][:version]}.zip
+      unzip #{Chef::Config[:file_cache_path]}/preview.zip
       EOH
     not_if { ::File.exists?('/home/preview/preview') }
   end
 
-  execute "chown -R preview:preview /home/preview/"
+  execute 'chown -R preview:preview /home/preview/'
 
-  file "/home/preview/preview" do
+  file '/home/preview/preview' do
     mode 00777
   end
 end
 
-template "/etc/preview.conf" do
-  source "preview.conf.erb"
+template '/etc/preview.conf' do
+  source 'preview.conf.erb'
   mode 0640
   group 'preview'
   owner 'preview'
