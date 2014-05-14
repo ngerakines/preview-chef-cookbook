@@ -66,3 +66,15 @@ template '/etc/preview.conf' do
   owner 'preview'
   variables(:json => JSON.pretty_generate(node[:preview][:config].to_hash))
 end
+
+case node['platform_family']
+when 'rhel'
+  package 'ImageMagick'
+when 'debian', 'mac_os_x'
+  package 'imagemagick'
+end
+
+package 'libreoffice-headless'
+package 'libreoffice-writer'
+package 'libreoffice-impress'
+package 'libreoffice-calc'
