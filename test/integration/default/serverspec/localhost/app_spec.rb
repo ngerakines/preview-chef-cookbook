@@ -29,4 +29,16 @@ describe 'preview app' do
     its(:stdout) { should match /\/home\/preview\/data\// }
   end
 
+  describe command('convert --version') do
+    its(:stdout) { should match /(6.2.8|6.5.4)/ }
+  end
+
+  describe command('libreoffice4.2 --version') do
+    its(:stdout) { should match /4.2/ }
+  end
+
+  describe command('pdfinfo -v') do
+    its(:stdout) { should match /(3.00|0.12.4)/ }
+  end
+
 end

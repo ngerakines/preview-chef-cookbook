@@ -12,3 +12,6 @@ depends 'yum'
 depends 'java'
 depends 'cassandra'
 depends 'golang'
+
+supports 'centos'
+# supports 'ubuntu' ## NKG: Disabled while libreoffice stuff gets worked out.

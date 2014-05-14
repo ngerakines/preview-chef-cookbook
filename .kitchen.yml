@@ -30,6 +30,9 @@ suites:
       - recipe[preview::default]
       - recipe[preview::deploy]
     attributes:
+    excludes:
+      - ubuntu-12.04
+      - ubuntu-13.10
   - name: build
     run_list:
       - recipe[preview::build]
