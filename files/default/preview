@@ -2,8 +2,8 @@
 #
 # preview - this script starts and stops the preview daemon
 #
-# chkconfig:   - 85 15 
-# description:  Preview is a preview image daemon.
+# chkconfig:   2345 20 80
+# description: Preview is a preview image daemon.
 # processname: preview
 # config:      /etc/preview.config
 # config:      /etc/sysconfig/preview
