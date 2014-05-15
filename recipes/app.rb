@@ -39,6 +39,7 @@ end
 case node[:preview][:install_type]
 when 'package'
   package node[:preview][:package]
+
 when 'archive'
   remote_file "#{Chef::Config[:file_cache_path]}/preview.zip" do
     source node[:preview][:archive_source]
@@ -113,8 +114,8 @@ when 'rhel'
       end
   end
 
-  link '/opt/libreoffice4.2/program/soffice.bin' do
-    to '/usr/bin/soffice'
+  link '/usr/bin/soffice' do
+    to '/opt/libreoffice4.2/program/soffice.bin'
   end
 
 when 'debian', 'mac_os_x'
