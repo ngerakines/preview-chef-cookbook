@@ -47,6 +47,7 @@ default[:preview][:config][:imageMagickRenderAgent][:supportedFileTypes][:pdf] =
 
 default[:preview][:config][:simpleApi] = {}
 default[:preview][:config][:simpleApi][:enabled] = true
+default[:preview][:config][:simpleApi][:baseUrl] = "/api"
 default[:preview][:config][:simpleApi][:edgeBaseUrl] = "http://localhost:#{node[:preview][:port]}"
 
 default[:preview][:config][:assetApi] = {}
