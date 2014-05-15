@@ -113,6 +113,10 @@ when 'rhel'
       end
   end
 
+  link '/opt/libreoffice4.2/program/soffice.bin' do
+    to '/usr/bin/soffice'
+  end
+
 when 'debian', 'mac_os_x'
   package 'imagemagick'
 end
